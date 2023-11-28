@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addNoteToList } from "../slices/notesSlice";
 
 function AddNote() {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isOpen, setIsOpen] = useState(true);
@@ -11,6 +14,7 @@ function AddNote() {
   function addTask(e) {
     e.preventDefault();
     console.log(title, description);
+    dispatch(addNoteToList({ title, description }));
   }
 
   return (

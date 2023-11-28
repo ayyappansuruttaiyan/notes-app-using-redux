@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { addTaskToList } from "../slices/tasksSlice";
+import { useDispatch } from "react-redux";
 
 function AddTask() {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isOpen, setIsOpen] = useState(true);
@@ -9,8 +12,10 @@ function AddTask() {
     setIsOpen(!isOpen);
   }
 
-  function addTask() {
+  function addTask(e) {
+    e.preventDefault();
     console.log(title, description);
+    dispatch(addTaskToList({ title, description }));
   }
 
   return (
