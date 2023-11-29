@@ -6,6 +6,7 @@ function AddTask() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [date, setDate] = useState(new Date().toLocaleTimeString());
   const [isOpen, setIsOpen] = useState(true);
 
   function onToggle() {
@@ -14,10 +15,13 @@ function AddTask() {
 
   function addTask(e) {
     e.preventDefault();
-    console.log(title, description);
-    dispatch(addTaskToList({ title, description }));
-    setTitle("");
-    setDescription("");
+    if (title && description) {
+      console.log(title, description, date);
+      dispatch(addTaskToList({ title, description, date }));
+      setTitle("");
+      setDescription("");
+      setDate(new Date().toLocaleTimeString());
+    }
   }
 
   return (
@@ -50,7 +54,12 @@ function AddTask() {
               className="border border-solid border-slate-300 p-2"
             />
             <div className="flex items-center">
-              <input className="m-4" type="date" />
+              <input
+                className="m-4"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
               <span>Date/Time</span>
             </div>
 

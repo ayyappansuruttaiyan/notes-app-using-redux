@@ -1,12 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { removeNoteFromBin } from "../slices/notesSlice";
 function Bin() {
   const { deletedNoteList } = useSelector((state) => state.notes);
+
+  const dispatch = useDispatch();
+
+  function emptyBin() {
+    dispatch(removeNoteFromBin());
+  }
   console.log(deletedNoteList);
   return (
     <div>
-      <button>Empty bin</button>
+      <button
+        type="button"
+        class="px-8 py-3 text-white bg-gray-300 rounded focus:outline-none"
+        onClick={() => emptyBin()}
+      >
+        Empty Bin
+      </button>
+
       {deletedNoteList && (
         <>
           <span className="flex row my-4">
@@ -15,17 +28,18 @@ function Bin() {
             </p>
           </span>
           <div className="grid grid-cols-3 gap-2">
-            {deletedNoteList.map((note) => (
-              <div
-                key={note.id}
-                className="basis-1/4  bg-white p-2 box-border  rounded shadow-2xl shadow-black/150"
-              >
-                <span className="flex justify-between text-xl font-medium">
-                  <h2 className="mb-2">{note.title}</h2>
-                </span>
-                <p className="mb-2">{note.description}</p>
-              </div>
-            ))}
+            {deletedNoteList &&
+              deletedNoteList.map((note) => (
+                <div
+                  key={note.id}
+                  className="basis-1/4  bg-white p-2 box-border  rounded shadow-2xl shadow-black/150"
+                >
+                  <span className="flex justify-between text-xl font-medium">
+                    <h2 className="mb-2">{note.title}</h2>
+                  </span>
+                  <p className="mb-2">{note.description}</p>
+                </div>
+              ))}
           </div>
         </>
       )}

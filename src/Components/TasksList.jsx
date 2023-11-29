@@ -4,6 +4,17 @@ import { removeTaskFromList } from "../slices/tasksSlice";
 
 function TasksList() {
   const { tasksList } = useSelector((state) => state.tasks);
+
+  const countDays = tasksList.map((task) => {
+    return Math.abs(
+      new Date().getTime() - new Date(task.date).getTime() / 86400000
+    );
+  });
+
+  console.log(countDays);
+  console.log(countDays);
+
+  console.log(tasksList);
   const dispatch = useDispatch();
 
   function deleteTask(task) {
@@ -23,7 +34,7 @@ function TasksList() {
                 <i className="fa-solid fa-circle-check"></i>
                 <div className="flex flex-col">
                   <h1>{task.title}</h1>
-                  <p className="text-xs">2 days left</p>
+                  <p className="text-xs">{task.date}</p>
                 </div>
               </div>
 

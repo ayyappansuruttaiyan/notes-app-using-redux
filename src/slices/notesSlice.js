@@ -32,6 +32,9 @@ const notesSlice = createSlice({
       let note = { ...action.payload };
       state.deletedNoteList.push(note);
     },
+    removeNoteFromBin: (state) => {
+      state.deletedNoteList = [];
+    },
   },
 });
 
@@ -41,5 +44,6 @@ export const {
   updateNoteInList,
   setSelectedNote,
   addDeletedNotesToList,
+  removeNoteFromBin,
 } = notesSlice.actions;
 export default notesSlice.reducer;

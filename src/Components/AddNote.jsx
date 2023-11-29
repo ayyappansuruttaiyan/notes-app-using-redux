@@ -16,9 +16,11 @@ function AddNote() {
 
   function addNote(e) {
     e.preventDefault();
-    dispatch(addNoteToList({ title, description, created: time }));
-    setTitle("");
-    setDescription("");
+    if (title && description) {
+      dispatch(addNoteToList({ title, description, created: time }));
+      setTitle("");
+      setDescription("");
+    }
   }
 
   return (

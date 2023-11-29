@@ -85,7 +85,7 @@ function NotesList() {
       <div>
         {notesList.length > 0 && (
           <>
-            <span className="flex row my-4">
+            <span className="flex flex-col my-4">
               <h4 className="text-xl font-medium">
                 <i className="fa-solid fa-note-sticky mr-2 text-base"></i>My
                 Notes
