@@ -1,11 +1,11 @@
 import React from "react";
-import AddTask from "../Components/AddNote";
+import AddNote from "../Components/AddNote";
 import NotesList from "../Components/NotesList";
 
 function Notes() {
   return (
     <div>
-      <AddTask />
+      <AddNote />
       <NotesList />
     </div>
   );

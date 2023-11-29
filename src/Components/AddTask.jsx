@@ -16,6 +16,8 @@ function AddTask() {
     e.preventDefault();
     console.log(title, description);
     dispatch(addTaskToList({ title, description }));
+    setTitle("");
+    setDescription("");
   }
 
   return (
@@ -36,14 +38,14 @@ function AddTask() {
             <input
               type="text"
               value={title}
-              placeholder="Title"
+              placeholder="Task Title"
               onChange={(e) => setTitle(e.target.value)}
               className="my-4 border border-solid border-slate-300 p-2"
             />
             <input
               type="textarea"
               placeholder="Add a Task"
-              value={title}
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="border border-solid border-slate-300 p-2"
             />

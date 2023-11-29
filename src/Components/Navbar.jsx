@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 
 function Navbar() {
@@ -52,18 +52,18 @@ function Navbar() {
       <ul>
         {navItems.map((item, index) => (
           <li
-            className={`bg-white rounded text-dark-blue text-lg cursor-pointer mt-3 p-2 hover:bg-dark-blue hover:text-white 
+            className={`bg-white rounded block text-dark-blue text-lg cursor-pointer mt-3 p-2 hover:bg-dark-blue hover:text-white 
             }`}
             key={index}
           >
-            <NavLink to={item.to}>
+            <Link to={item.to}>
               <span className="mr-3">
                 <i className={`${item.icon}`}></i>
               </span>
               <span className=" text-base font-medium flex-1 ">
                 {item.name}
               </span>
-            </NavLink>
+            </Link>
           </li>
         ))}
       </ul>
