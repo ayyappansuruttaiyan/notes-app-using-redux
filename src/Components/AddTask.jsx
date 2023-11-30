@@ -28,7 +28,7 @@ function AddTask() {
     <div className="container">
       <form
         onSubmit={addTask}
-        className=" container flex bg-white w-[100%] flex-col rounded p-4 "
+        className=" container flex w-[100%] flex-col rounded bg-white p-4 "
       >
         <span className="flex justify-between text-xl font-semibold">
           <p>Add a Task</p>
@@ -63,7 +63,7 @@ function AddTask() {
               <span>Date/Time</span>
             </div>
 
-            <button className="flex bg-slate-200 w-max rounded-full p-2 items-center justify-content my-4 font-semibold">
+            <button className="justify-content my-4 flex w-max items-center rounded bg-slate-200 p-2 font-semibold hover:bg-dark-blue hover:text-white ">
               Add Task
             </button>
           </>

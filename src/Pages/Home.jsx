@@ -6,10 +6,11 @@ import TasksList from "../Components/TasksList";
 function Home() {
   const { notesList } = useSelector((state) => state.notes);
   const { tasksList } = useSelector((state) => state.tasks);
+  const { profile } = useSelector((state) => state.profile);
   return (
     <div className="container">
       <h2 className="text-2xl font-medium border-b-2 border-solid border-gray-50 pb-4">
-        Welcome John Doe
+        Welcome, {profile.name}
       </h2>
 
       <span className="flex row my-4">

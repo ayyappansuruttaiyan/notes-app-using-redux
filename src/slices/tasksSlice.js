@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 const initialState = {
   tasksList: [],
   selectedTask: {},
+  deletedTaskList: [],
 };
 
 const tasksSlice = createSlice({
@@ -15,9 +17,13 @@ const tasksSlice = createSlice({
   reducers: {
     addTaskToList: (state, action) => {
       // every task need id. so, we create id dynamically
-      const id = Math.random() * 100;
+      let id = uuidv4();
       let task = { ...action.payload, id };
       state.tasksList.push(task);
+    },
+    addDeletedTasksToList: (state, action) => {
+      let task = { ...action.payload };
+      state.deletedTaskList.push(task);
     },
     removeTaskFromList: (state, action) => {
       state.tasksList = state.tasksList.filter(
@@ -32,6 +38,10 @@ const tasksSlice = createSlice({
     setSelectedTask: (state, action) => {
       state.selectedTask = action.payload;
     },
+
+    removeTaskFromBin: (state, action) => {
+      state.deletedTaskList = [];
+    },
   },
 });
 
@@ -40,6 +50,8 @@ export const {
   removeTaskFromList,
   updateTaskInList,
   setSelectedTask,
+  removeTaskFromBin,
+  addDeletedTasksToList,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

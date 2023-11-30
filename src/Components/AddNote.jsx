@@ -7,7 +7,7 @@ function AddNote() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [isOpen, setIsOpen] = useState(true);
 
   function onToggle() {
@@ -17,21 +17,22 @@ function AddNote() {
   function addNote(e) {
     e.preventDefault();
     if (title && description) {
-      dispatch(addNoteToList({ title, description, created: time }));
+      dispatch(addNoteToList({ title, description, createdAt: time }));
       setTitle("");
       setDescription("");
+      setTime(new Date().toLocaleTimeString());
     }
   }
 
   return (
     <div className="container">
-      <form className=" container flex bg-white w-[100%] flex-col rounded p-4">
+      <form className=" container flex w-[100%] flex-col rounded bg-white p-4">
         <span className="flex justify-between  text-xl font-semibold">
           <p>Add a Note</p>
           <i
             onClick={onToggle}
-            className="fa-solid fa-xmark cursor-pointer
-            }"
+            className="fa-solid fa-xmark }
+            cursor-pointer"
           ></i>
         </span>
         {isOpen && (
@@ -52,9 +53,9 @@ function AddNote() {
             />
 
             <input type="text" />
-            <div className="flex items-center bg-slate-100 w-max p-2 gap-2 rounded-full my-3">
+            <div className="my-3 flex w-max items-center gap-2 rounded-full bg-slate-100 p-2">
               <i className="fa-regular fa-clock"></i>
-              <p>{time.toLocaleTimeString()}</p>
+              <p>{new Date().toLocaleTimeString()}</p>
             </div>
             <div className="flex gap-6">
               <i className="fa-solid fa-text-width cursor-pointer"></i>
@@ -68,7 +69,7 @@ function AddNote() {
             <span>
               <button
                 onClick={addNote}
-                className="flex bg-slate-200 w-max rounded-full p-2 items-start justify-content my-4 font-semibold"
+                className="justify-content my-4 flex w-max items-start rounded bg-slate-200 p-2 font-semibold hover:bg-dark-blue hover:text-white"
               >
                 Add Note
               </button>

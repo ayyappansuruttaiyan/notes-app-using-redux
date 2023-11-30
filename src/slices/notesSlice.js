@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { v4 as uuidv4 } from "uuid";
 const initialState = {
   notesList: [],
   selectedNote: {},
@@ -11,7 +11,7 @@ const notesSlice = createSlice({
   initialState: initialState,
   reducers: {
     addNoteToList: (state, action) => {
-      const id = Math.random() * 100;
+      let id = uuidv4(4);
       let note = { ...action.payload, id };
       state.notesList.push(note);
     },

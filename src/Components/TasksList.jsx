@@ -1,13 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTaskFromList } from "../slices/tasksSlice";
+import {
+  removeTaskFromList,
+  addDeletedTasksToList,
+} from "../slices/tasksSlice";
 
 function TasksList() {
   const { tasksList } = useSelector((state) => state.tasks);
 
   const countDays = tasksList.map((task) => {
     return Math.abs(
-      new Date().getTime() - new Date(task.date).getTime() / 86400000
+      (new Date().getTime().toLocaleString() -
+        new Date(task.date).getTime().toLocaleString()) /
+        86400000
     );
   });
 
@@ -19,6 +24,7 @@ function TasksList() {
 
   function deleteTask(task) {
     dispatch(removeTaskFromList(task));
+    dispatch(addDeletedTasksToList(task));
   }
   return (
     <div className="mt-5">

@@ -10,7 +10,7 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen scroll-smooth md:scroll-auto">
       <Navbar />
       <div className="bg-light-purple text-black p-5 w-[80%]">
         <Routes>
